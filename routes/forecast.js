@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var YQL = require('yql');
+var pretty = require('prettyjson');
 
 /* GET forecast. */
 router.get('/:city/:country', function(req, res, next) {
@@ -13,7 +14,7 @@ router.get('/:city/:country', function(req, res, next) {
     var location = data.query.results.channel.location;
     var condition = data.query.results.channel.item.condition;
     
-    res.send('The current weather in ' + location.city + ', ' + location.region + ' is ' + condition.temp + ' degrees.');
+    res.send('The current weather in ' + location.city + ', ' + location.country + ' is ' + condition.text + ' at ' + condition.temp + ' degrees.');
   });
 });
 
