@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var YQL = require('yql');
-var pretty = require('prettyjson');
 
 /* GET forecast. */
 router.get('/:city/:country', function(req, res, next) {
