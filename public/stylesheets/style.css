@@ -6,3 +6,15 @@ body {
 a {
   color: #00B7FF;
 }
+
+.align-right {
+  text-align: right;
+}
+
+.table thead > tr > th {
+  border-bottom: none;
+}
+
+.table tbody > tr:first-child > td {
+  border-top: none;
+}
