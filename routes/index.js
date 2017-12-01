@@ -4,6 +4,45 @@ var YQL = require('yql');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  
+  var popular_locations = [
+      "Dublin, Ireland",
+      "Boston, USA"
+  ];
+  
+  var weather = {};
+    
+  popular_locations.forEach(function(popular_location, currentLocation){
+    var query = new YQL(`select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="${popular_location}") and u="c" `);
+
+    weather[popular_location] =  [];
+    
+    query.exec(function(err, data) {
+      var forecast = data.query.results.channel.item.forecast;
+  
+      forecast.forEach(function(dayOfWeek, currentDay){
+        var day = forecast[currentDay].day;
+        var date = forecast[currentDay].date;
+        var high = forecast[currentDay].high;
+        var low = forecast[currentDay].low;
+        var condition = forecast[currentDay].text;
+        
+        weather[popular_location].push({
+            day: day,
+            date: date,
+            high: high,
+            low: low,
+            condition: condition
+          });
+        
+      }); // forEach day
+    });
+  }); // forEach location
+  
+  setTimeout(function(){
+    console.log(weather);
+  }, 3000);
+
   res.render('index', {
     title: 'Weather4U'
   });
@@ -13,20 +52,6 @@ router.get('/', function(req, res, next) {
 router.post('/', function (req, res) {
   res.render('index', {
     title: 'Weather4U'
-  });
-  
-  var query = new YQL(`select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="${req.body.location}") and u="c" `);
-  
-  query.exec(function(err, data) {
-    var location = data.query.results.channel.location;
-    var condition = data.query.results.channel.item.condition;
-    var weather = data.query.results.channel.item.forecast;
-    
-    console.log("\n\n");
-    console.log('The current weather in ' + location.city + ', ' + location.country + ' is ' + condition.text + ' at ' + condition.temp + ' degrees.');
-    console.log("\n\n");
-    console.log(weather);
-    console.log("\n\n");
   });
 });
 
