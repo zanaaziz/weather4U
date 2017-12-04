@@ -3,12 +3,11 @@ var router = express.Router();
 var YQL = require('yql');
 
   var popular_locations = [
-      "Dublin, Ireland",
-      "Moscow, Russia"
+    "Tel Aviv, Israel"
   ];
   
   var weather = {};
-    
+  
   popular_locations.forEach(function(popular_location, currentLocation){
     var query = new YQL(`select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="${popular_location}") and u="c" `);
 
