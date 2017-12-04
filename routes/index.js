@@ -2,12 +2,9 @@ var express = require('express');
 var router = express.Router();
 var YQL = require('yql');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  
   var popular_locations = [
       "Dublin, Ireland",
-      "Boston, USA"
+      "Moscow, Russia"
   ];
   
   var weather = {};
@@ -36,15 +33,18 @@ router.get('/', function(req, res, next) {
           });
         
       }); // forEach day
-    });
+    }); // API call
   }); // forEach location
-  
-  setTimeout(function(){
-    console.log(weather);
-  }, 3000);
 
-  res.render('index', {
-    title: 'Weather4U'
+
+/* GET home page. */
+router.get('/', function(req, res, next) {
+    console.log("\n")
+    console.log(weather);
+    console.log("\n")
+    res.render('index', {
+    title: 'Weather4U',
+    weather: weather
   });
 });
 

@@ -1,11 +1,15 @@
+<% for(var locations in weather) { %>
+
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">Alaska, USA</h3>
+        <h3 class="panel-title"><%- locations %></h3><!-- Location Name -->
     </div>
+    
+    <% for(var days in weather[locations]) { %>
     
     <div class="panel-body">
         <div class="panel-heading">
-            <h3 class="panel-title">Thursday: 30/11/2017</h3>
+            <h3 class="panel-title"><%- weather[locations][days].day %>: <%- weather[locations][days].date %></h3><!-- Day: Date -->
         </div>
         
         <div class="panel-body">
@@ -20,18 +24,22 @@
                 <tbody>
                     <tr>
                         <td>High: </td>
-                        <td class="align-right">-18&deg</td>
+                        <td class="align-right"><%- weather[locations][days].high %>&deg</td>
                     </tr>
                     <tr>
                         <td>Low: </td>
-                        <td class="align-right">-20&deg</td>
+                        <td class="align-right"><%- weather[locations][days].low %>&deg</td>
                     </tr>
                     <tr>
                         <td>Conditions: </td>
-                        <td class="align-right">Scattered Snow Showers</td>
+                        <td class="align-right"><%- weather[locations][days].condition %></td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
+    
+    <% } %><!-- days loop -->
 </div>
+
+<% } %><!-- locations loop -->
