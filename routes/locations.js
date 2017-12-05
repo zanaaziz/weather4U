@@ -5,7 +5,6 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.render('locations', {
       title: 'Weather4U'
-      
   });
 });
 

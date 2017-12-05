@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include ../partials/head %>
+  </head>
+  
+  <body class="container">
+    <header>
+      <% include ../partials/header %>
+    </header>
+
+    <main style="margin-top: 50px">
+      
+      <% if(JSON.stringify(search) != "{}"){ %>
+        <% include ../partials/search_result %>
+        
+      <% }else{ %>
+      
+        <div class="jumbotron">
+          <h2><%= title %> - Search</h2>
+          <p>Blah blah blah...</p>
+          <p>Search for a location and you won't see this no more :)</p>
+      </div>
+        
+      <% } %>
+      
+    </main>
+    
+  <% include ../partials/footer %>
+  </body>
+</html>

@@ -1,21 +1,13 @@
-<% if(JSON.stringify(pop_weather) != "{}"){ %>
-
-    <h3>Popular Locations</h3>
-    
-    <% for(var locations in pop_weather){ %>
-    
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><%- locations %></h3><!-- Location Name -->
+                <h3 class="panel-title"><%- location %></h3><!-- Location Name -->
             </div>
             
-            <% for(var days in pop_weather[locations]){ %>
-            
-                <% if(days < 1){ %>
-                
+            <% for(var days in search){ %>
+        
                     <div class="panel-body">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Today: <%- pop_weather[locations][days].date %></h3><!-- Day: Date -->
+                            <h3 class="panel-title"><%- search[days].day %>: <%- search[days].date %></h3><!-- Day: Date -->
                         </div>
                         
                         <div class="panel-body">
@@ -30,22 +22,19 @@
                                 <tbody>
                                     <tr>
                                         <td>High: </td>
-                                        <td class="align-right"><%- pop_weather[locations][days].high %>&deg</td>
+                                        <td class="align-right"><%- search[days].high %>&deg</td>
                                     </tr>
                                     <tr>
                                         <td>Low: </td>
-                                        <td class="align-right"><%- pop_weather[locations][days].low %>&deg</td>
+                                        <td class="align-right"><%- search[days].low %>&deg</td>
                                     </tr>
                                     <tr>
                                         <td>Conditions: </td>
-                                        <td class="align-right"><%- pop_weather[locations][days].condition %></td>
+                                        <td class="align-right"><%- search[days].text %></td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                <% } %><!-- /if days < 3 -->
-            <% } %><!-- /days loop -->
+                <% } %><!-- /for days -->
         </div>
-    <% } %><!-- /locations loop -->
-<% } %><!-- /if pop_weather is empty -->
