@@ -15,26 +15,25 @@ router.post('/', function (req, res) {
   
   var query = new YQL(`select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="${req.body.location}") and u="c" `);
     
-    query.exec(function(err, data) {
-      
-      if(err) {
-        console.log('`\n\n\n\nERRORRRR\n\n\n\n');
-        return;
-      }
-      
-      var forecast = data.query.results.channel.item.forecast;
-
-      console.log("\n");
-      console.log(forecast);
-      console.log("\n");
+  query.exec(function(err, data) {
     
-      res.render('search', {
-        title: 'Weather4U',
-        location: data.query.results.channel.item.title,
-        search: forecast
-      });
-      
-    }); // API call
+    if(err) {
+      console.log(err);
+      return;
+    }
+    
+    var result = data.query.results.channel;
+
+    console.log("\n");
+    console.log(data.query.results.channel);
+    console.log("\n");
+  
+    res.render('search', {
+      title: 'Weather4U',
+      search: result
+    });
+    
+  }); // API call
 });
 
 module.exports = router;
