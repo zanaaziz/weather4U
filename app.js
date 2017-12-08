@@ -5,6 +5,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+// mongodb
+var mongo = require('mongodb');
+var monk = require('monk');
+var db = monk('zanadaniel-weather4u-5712074:27017/weather4u');
+
 var index = require('./routes/index');
 var search = require('./routes/search');
 var about = require('./routes/about');
@@ -25,6 +30,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Make our db accessible to our router
+app.use(function(req,res,next){
+    req.db = db;
+    next();
+});
 
 app.use('/', index);
 app.use('/search', search);

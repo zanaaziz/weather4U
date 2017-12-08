@@ -12,7 +12,9 @@
     <main>
       <div class="jumbotron">
           <h2><%= title %> - Locations</h2>
-          <p>Blah blah blah...</p>
+          <% for(var loc in locations){ %>
+            <%= locations[loc].city %>, <%= locations[loc].country %><br>
+          <% } %>
       </div>
     </main>
     
