@@ -10,12 +10,13 @@
     </header>
 
     <main>
-      <div class="jumbotron">
-          <h2><%= title %> - Locations</h2>
-          <% for(var loc in locations){ %>
-            <%= locations[loc].city %>, <%= locations[loc].country %><br>
-          <% } %>
-      </div>
+      <h2>Saved Locations</h2>
+      
+      <% for(var loc in locations){ %>
+      
+        <% include ../partials/locations_table %>
+        
+      <% } %><!-- /for location in db -->
     </main>
     
     <footer>

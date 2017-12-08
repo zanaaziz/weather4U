@@ -33,21 +33,19 @@ popular_locations.forEach(function(popular_location, currentLocation){
         sunrise: data.query.results.channel.astronomy.sunrise,
         sunset: data.query.results.channel.astronomy.sunset
     };
-      
-
-    /* GET home page. */
-    router.get('/', function(req, res, next) {
-        console.log("\n")
-        console.log(pop_weather);
-        console.log("\n")
-        
-        res.render('index', {
-        title: 'Weather4U',
-        pop_weather: pop_weather
-      });
-    });
-    
   }); // API call
 }); // forEach location
+
+/* GET home page. */
+router.get('/', function(req, res, next) {
+    console.log("\n")
+    console.log(pop_weather);
+    console.log("\n")
+    
+    res.render('index', {
+    title: 'Weather4U',
+    pop_weather: pop_weather
+  });
+});
 
 module.exports = router;

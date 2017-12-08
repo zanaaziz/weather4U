@@ -1,0 +1,57 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            <%- loc %><!-- Location Name -->
+        </h3>
+    </div>
+    
+    <% for(var day in locations[loc]){ %>
+        <div class="panel-body">
+            <div class="panel-heading">
+                <h3 class="panel-title"><%- locations[loc][day].day %>: <%- locations[loc][day].date %></h3><!-- Day: Date -->
+            </div>
+            
+            <div class="panel-body">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>Conditions: </td>
+                            <td class="align-right"><%- locations[loc][day].condition %></td>
+                        </tr>
+                        <tr>
+                            <td>High: </td>
+                            <td class="align-right"><%- locations[loc][day].high %>&deg</td>
+                        </tr>
+                        <tr>
+                            <td>Low: </td>
+                            <td class="align-right"><%- locations[loc][day].low %>&deg</td>
+                        </tr>
+                        
+                        <% if(day == 0){ %>
+                            <tr>
+                                <td>Humidity: </td>
+                                <td class="align-right"><%- locations[loc][day].humidity %>%</td>
+                            </tr>
+                            <tr>
+                                <td>Wind Speed: </td>
+                                <td class="align-right"><%- locations[loc][day].windspeed %> km/h</td>
+                            </tr>
+                            <tr>
+                                <td>Visibility: </td>
+                                <td class="align-right"><%- locations[loc][day].visibility %> km</td>
+                            </tr>
+                            <tr>
+                                <td>Sunrise: </td>
+                                <td class="align-right"><%- locations[loc][day].sunrise %></td>
+                            </tr>
+                            <tr>
+                                <td>Sunset: </td>
+                                <td class="align-right"><%- locations[loc][day].sunset %></td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    <% } %><!-- /for days -->
+</div>
