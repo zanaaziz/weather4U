@@ -5,11 +5,7 @@ var YQL = require('yql');
 /* GET locations page. */
 router.get('/', function(req, res, next) {
   req.db.get('locations').find({},{},function(e,docs){
-    
-    console.log('\nDatabase:\n');
-    console.log(docs);
-    console.log('\n');
-    
+
     var saved_locations = {};
     
     docs.forEach(function(loc, currentLoc){

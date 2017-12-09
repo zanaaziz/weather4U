@@ -39,10 +39,6 @@ router.get('/', function(req, res, next) {
     }); // forEach location
 
     setTimeout(function() {
-      console.log("\n")
-      console.log(pop_weather);
-      console.log("\n")
-      
       res.render('index', {
         title: 'Weather4U',
         pop_weather: pop_weather
