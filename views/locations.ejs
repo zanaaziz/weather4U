@@ -10,13 +10,23 @@
     </header>
 
     <main>
-      <h2>Saved Locations</h2>
-      
-      <% for(var loc in locations){ %>
-      
-        <% include ../partials/locations_table %>
+      <% if(JSON.stringify(locations) != "{}"){ %>
+        <h3>Saved Locations</h3>
         
-      <% } %><!-- /for location in db -->
+        <% for(var loc in locations){ %>
+        
+          <% current_location = loc.replace(', ', '/'); %><!-- creates a string that stores the current location in URL format i.e. 'dublin/ireland' -->
+          <% current_location_id = loc.replace(', ', '_'); %><!-- creates a unique string that will be the form ID of each location -->
+        
+          <% include ../partials/locations_table %><!-- displaying the forecast tables -->
+          
+        <% } %><!-- /for location in db -->
+      <% }else{ %>
+        <div class="jumbotron">
+          <h2>It Seems You Haven't Saved Any Locations :(</h2><br />
+          <p>You can search any location, save it, and it'll be found here.</p>
+        </div>
+      <% } %>
     </main>
     
     <footer>

@@ -37,6 +37,7 @@ app.use(function(req,res,next){
     next();
 });
 
+
 app.use('/', index);
 app.use('/search', search);
 app.use('/about', about);

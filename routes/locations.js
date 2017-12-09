@@ -4,9 +4,7 @@ var YQL = require('yql');
 
 /* GET locations page. */
 router.get('/', function(req, res, next) {
-  var db = req.db;
-  var collection = db.get('locations');
-  collection.find({},{},function(e,docs){
+  req.db.get('locations').find({},{},function(e,docs){
     
     console.log('\nDatabase:\n');
     console.log(docs);
@@ -59,9 +57,26 @@ router.get('/', function(req, res, next) {
       res.render('locations', {
       title: 'Weather4U',
       locations: saved_locations
-    });
+      });
     }, 1000);
   });
+});
+
+/* POST delete */
+router.post('/delete/:city/:country', function(req, res) {
+  
+  req.db.get('locations').remove({
+    city: req.params.city,
+    country: req.params.country
+  }, function (err,oc) {
+    if (err) {
+      // If it failed, return error
+      res.send("There was a problem deleting the information from the database.");
+    } else {
+      // redirect to locations
+      res.redirect("../../../locations");
+    }
+  }); // db delete
 });
 
 module.exports = router;

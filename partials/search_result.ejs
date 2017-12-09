@@ -1,61 +1,69 @@
 <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">
-            <%- search.item.title %><!-- Location Name -->
+            <%- search.location.city %>, <%- search.location.country %><!-- Location Name -->
         
             <form class="pull-right" name="save" method="post" action="/search/save">
-                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true" onclick="save.submit()"><span>
+                <span class="glyphicon glyphicon-plus-sign" id="save" aria-hidden="true" onclick="save.submit()"></span>
             </form>
         </h3>
     </div>
     
     <% for(var days in search.item.forecast){ %>
-        <div class="panel-body">
-            <div class="panel-heading">
-                <h3 class="panel-title"><%- search.item.forecast[days].day %>: <%- search.item.forecast[days].date %></h3><!-- Day: Date -->
-            </div>
-            
+        <% if(days < 8){ %>
             <div class="panel-body">
-                <table class="table">
-                    <tbody>
-                        <tr>
-                            <td>Conditions: </td>
-                            <td class="align-right"><%- search.item.forecast[days].text %></td>
-                        </tr>
-                        <tr>
-                            <td>High: </td>
-                            <td class="align-right"><%- search.item.forecast[days].high %>&deg</td>
-                        </tr>
-                        <tr>
-                            <td>Low: </td>
-                            <td class="align-right"><%- search.item.forecast[days].low %>&deg</td>
-                        </tr>
-                        
-                        <% if(days == 0){ %>
+                <% if(days == 0){ %>
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Today: <%- search.item.forecast[days].date %></h3><!-- Day: Date -->
+                    </div>
+                <% }else{ %>
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><%- search.item.forecast[days].day %>: <%- search.item.forecast[days].date %></h3><!-- Day: Date -->
+                    </div>
+                <% } %>
+                
+                <div class="panel-body">
+                    <table class="table">
+                        <tbody>
                             <tr>
-                                <td>Humidity: </td>
-                                <td class="align-right"><%- search.atmosphere.humidity %>%</td>
+                                <td>Conditions: </td>
+                                <td class="align-right"><%- search.item.forecast[days].text %></td>
                             </tr>
                             <tr>
-                                <td>Wind Speed: </td>
-                                <td class="align-right"><%- search.wind.speed %> km/h</td>
+                                <td>High: </td>
+                                <td class="align-right"><%- search.item.forecast[days].high %>&deg</td>
                             </tr>
                             <tr>
-                                <td>Visibility: </td>
-                                <td class="align-right"><%- search.atmosphere.visibility %> km</td>
+                                <td>Low: </td>
+                                <td class="align-right"><%- search.item.forecast[days].low %>&deg</td>
                             </tr>
-                            <tr>
-                                <td>Sunrise: </td>
-                                <td class="align-right"><%- search.astronomy.sunrise %></td>
-                            </tr>
-                            <tr>
-                                <td>Sunset: </td>
-                                <td class="align-right"><%- search.astronomy.sunset %></td>
-                            </tr>
-                        <% } %>
-                    </tbody>
-                </table>
+                            
+                            <% if(days == 0){ %>
+                                <tr>
+                                    <td>Humidity: </td>
+                                    <td class="align-right"><%- search.atmosphere.humidity %>%</td>
+                                </tr>
+                                <tr>
+                                    <td>Wind Speed: </td>
+                                    <td class="align-right"><%- search.wind.speed %> km/h</td>
+                                </tr>
+                                <tr>
+                                    <td>Visibility: </td>
+                                    <td class="align-right"><%- search.atmosphere.visibility %> km</td>
+                                </tr>
+                                <tr>
+                                    <td>Sunrise: </td>
+                                    <td class="align-right"><%- search.astronomy.sunrise %></td>
+                                </tr>
+                                <tr>
+                                    <td>Sunset: </td>
+                                    <td class="align-right"><%- search.astronomy.sunset %></td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
+        <% } %>
     <% } %><!-- /for days -->
 </div>

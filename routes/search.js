@@ -4,14 +4,6 @@ var YQL = require('yql');
 
 var result;
 
-/* GET search page. */
-router.get('/', function(req, res, next) {
-  res.render('search', {
-      title: 'Weather4U',
-      search: {}
-  });
-});
-
 /* POST search */
 router.post('/', function (req, res, next) {
   

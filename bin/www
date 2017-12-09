@@ -81,5 +81,5 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
-  console.log("server running on: https://weather4u-zanadaniel.c9users.io");
+  console.log("\nServer running on: https://weather4u-zanadaniel.c9users.io\n");
 }

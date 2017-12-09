@@ -9,21 +9,9 @@
       <% include ../partials/header %>
     </header>
 
-    <main style="margin-top: 50px">
-      
-      <% if(JSON.stringify(search) != "{}"){ %>
-        <% include ../partials/search_result %>
-        
-      <% }else{ %>
-      
-        <div class="jumbotron">
-          <h2><%= title %> - Search</h2>
-          <p>Blah blah blah...</p>
-          <p>Search for a location and you won't see this no more :)</p>
-      </div>
-        
-      <% } %>
-      
+    <main>
+      <h3>Search Result</h3>
+      <% include ../partials/search_result %>
     </main>
     
   <% include ../partials/footer %>
