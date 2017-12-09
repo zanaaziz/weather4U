@@ -18,18 +18,14 @@ main {
   text-align: right;
 }
 
-.table thead > tr > th {
-  border-bottom: none;
-}
-
 .table tbody > tr:first-child > td {
   border-top: none;
 }
 
 #del {
-  color: Crimson;
+  color: black;
 }
 
 #save {
-  color: Green;
+  color: black;
 }

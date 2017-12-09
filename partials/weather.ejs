@@ -4,52 +4,48 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title"><%- locations %></h3><!-- Location Name -->
+            <h4 class="panel-title"><%- locations %></h4><!-- Location Name -->
         </div>
 
         <div class="panel-body">
-            <div class="panel-heading">
-                <h3 class="panel-title">Today: <%- pop_weather[locations].date %></h3><!-- Day: Date -->
-            </div>
+            <h5>Today: <%- pop_weather[locations].date %></h5><!-- Day: Date -->
             
-            <div class="panel-body">
-                <table class="table">
-                    <tbody>
-                        <tr>
-                            <td>Conditions: </td>
-                            <td class="align-right"><%- pop_weather[locations].condition %></td>
-                        </tr>
-                        <tr>
-                            <td>High: </td>
-                            <td class="align-right"><%- pop_weather[locations].high %>&deg</td>
-                        </tr>
-                        <tr>
-                            <td>Low: </td>
-                            <td class="align-right"><%- pop_weather[locations].low %>&deg</td>
-                        </tr>
-                        <tr>
-                            <td>Humidity: </td>
-                            <td class="align-right"><%- pop_weather[locations].humidity %>%</td>
-                        </tr>
-                        <tr>
-                            <td>Wind Speed: </td>
-                            <td class="align-right"><%- pop_weather[locations].windspeed %> km/h</td>
-                        </tr>
-                        <tr>
-                            <td>Visibility: </td>
-                            <td class="align-right"><%- pop_weather[locations].visibility %> km</td>
-                        </tr>
-                        <tr>
-                            <td>Sunrise: </td>
-                            <td class="align-right"><%- pop_weather[locations].sunrise %></td>
-                        </tr>
-                        <tr>
-                            <td>Sunset: </td>
-                            <td class="align-right"><%- pop_weather[locations].sunset %></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <table class="table table-striped">
+                <tbody>
+                    <tr>
+                        <td>Conditions: </td>
+                        <td class="align-right"><%- pop_weather[locations].condition %></td>
+                    </tr>
+                    <tr>
+                        <td>High: </td>
+                        <td class="align-right"><%- pop_weather[locations].high %>&deg</td>
+                    </tr>
+                    <tr>
+                        <td>Low: </td>
+                        <td class="align-right"><%- pop_weather[locations].low %>&deg</td>
+                    </tr>
+                    <tr>
+                        <td>Humidity: </td>
+                        <td class="align-right"><%- pop_weather[locations].humidity %>%</td>
+                    </tr>
+                    <tr>
+                        <td>Wind Speed: </td>
+                        <td class="align-right"><%- pop_weather[locations].windspeed %> km/h</td>
+                    </tr>
+                    <tr>
+                        <td>Visibility: </td>
+                        <td class="align-right"><%- pop_weather[locations].visibility %> km</td>
+                    </tr>
+                    <tr>
+                        <td>Sunrise: </td>
+                        <td class="align-right"><%- pop_weather[locations].sunrise %></td>
+                    </tr>
+                    <tr>
+                        <td>Sunset: </td>
+                        <td class="align-right"><%- pop_weather[locations].sunset %></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 <% } %><!-- /locations loop -->

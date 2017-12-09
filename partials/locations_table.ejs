@@ -1,69 +1,67 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">
+        <h4 class="panel-title">
             <%- loc %><!-- Location Name -->
             
-            <form id="<%- current_location_id %>" class="pull-right" name="del" method="post" action="/locations/delete/<%- current_location %>">
-                <span class="glyphicon glyphicon-remove" id="del" aria-hidden="true" onclick="document.getElementById('<%- current_location_id %>').submit()"></span>
+            <form id="<%- current_location_id %>" class="pull-right" style="margin-left: 25px;" method="post" action="/locations/delete/<%- current_location %>">
+                <span class="glyphicon glyphicon-remove-sign" id="del" aria-hidden="true" onclick="document.getElementById('<%- current_location_id %>').submit()"></span>
             </form>
-        </h3>
+            
+            <form id="<%- current_location_id %>" class="pull-right" method="post" action="/locations/delete/<%- current_location %>">
+                <span class="glyphicon glyphicon-info-sign" id="del" aria-hidden="true" onclick="document.getElementById('<%- current_location_id %>').submit()"></span>
+            </form>
+        </h4>
     </div>
     
-    <% for(var day in locations[loc]){ %>
-        <% if(day < 8){ %>
-            <div class="panel-body">
+    <div class="panel-body">
+        <% for(var day in locations[loc]){ %>
+            <% if(day < 8){ %>
                 <% if(day == 0){ %>
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Today: <%- locations[loc][day].date %></h3><!-- Day: Date -->
-                    </div>
+                    <h5>Today: <%- locations[loc][day].date %></h5><!-- Day: Date -->
                 <% }else{ %>
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><%- locations[loc][day].day %>: <%- locations[loc][day].date %></h3><!-- Day: Date -->
-                    </div>
+                    <h5><%- locations[loc][day].day %>: <%- locations[loc][day].date %></h5><!-- Day: Date -->
                 <% } %>
                 
-                <div class="panel-body">
-                    <table class="table">
-                        <tbody>
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <td>Conditions: </td>
+                            <td class="align-right"><%- locations[loc][day].condition %></td>
+                        </tr>
+                        <tr>
+                            <td>High: </td>
+                            <td class="align-right"><%- locations[loc][day].high %>&deg</td>
+                        </tr>
+                        <tr>
+                            <td>Low: </td>
+                            <td class="align-right"><%- locations[loc][day].low %>&deg</td>
+                        </tr>
+                        
+                        <% if(day == 0){ %>
                             <tr>
-                                <td>Conditions: </td>
-                                <td class="align-right"><%- locations[loc][day].condition %></td>
+                                <td>Humidity: </td>
+                                <td class="align-right"><%- locations[loc][day].humidity %>%</td>
                             </tr>
                             <tr>
-                                <td>High: </td>
-                                <td class="align-right"><%- locations[loc][day].high %>&deg</td>
+                                <td>Wind Speed: </td>
+                                <td class="align-right"><%- locations[loc][day].windspeed %> km/h</td>
                             </tr>
                             <tr>
-                                <td>Low: </td>
-                                <td class="align-right"><%- locations[loc][day].low %>&deg</td>
+                                <td>Visibility: </td>
+                                <td class="align-right"><%- locations[loc][day].visibility %> km</td>
                             </tr>
-                            
-                            <% if(day == 0){ %>
-                                <tr>
-                                    <td>Humidity: </td>
-                                    <td class="align-right"><%- locations[loc][day].humidity %>%</td>
-                                </tr>
-                                <tr>
-                                    <td>Wind Speed: </td>
-                                    <td class="align-right"><%- locations[loc][day].windspeed %> km/h</td>
-                                </tr>
-                                <tr>
-                                    <td>Visibility: </td>
-                                    <td class="align-right"><%- locations[loc][day].visibility %> km</td>
-                                </tr>
-                                <tr>
-                                    <td>Sunrise: </td>
-                                    <td class="align-right"><%- locations[loc][day].sunrise %></td>
-                                </tr>
-                                <tr>
-                                    <td>Sunset: </td>
-                                    <td class="align-right"><%- locations[loc][day].sunset %></td>
-                                </tr>
-                            <% } %>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        <% } %>
-    <% } %><!-- /for days -->
+                            <tr>
+                                <td>Sunrise: </td>
+                                <td class="align-right"><%- locations[loc][day].sunrise %></td>
+                            </tr>
+                            <tr>
+                                <td>Sunset: </td>
+                                <td class="align-right"><%- locations[loc][day].sunset %></td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            <% } %>
+        <% } %><!-- /for days -->
+    </div>
 </div>
