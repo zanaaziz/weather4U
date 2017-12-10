@@ -26,7 +26,13 @@ You can update and delete existing favourites as well by using the 'i' and 'x' b
 <img src="https://github.com/zanadaniel/Weather4U/blob/master/Misc/EditDelete.png">
 
 ## Update Saved Location
+Selecting the edit button will bring you to a page where you can enter the new location for which you'd like to set.<br>
+It will then update and apply the changes accordingly.
+
 <img src="https://github.com/zanadaniel/Weather4U/blob/master/Misc/Edit.png">
 
 ## Delete Saved Location
+Deleting a saved location will of course delete it, update, and apply the changes to your favourites.<br>
+If you have no saved locations, you will just see a very sad page...
+
 <img src="https://github.com/zanadaniel/Weather4U/blob/master/Misc/Favourites.png">
