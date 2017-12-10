@@ -9,19 +9,19 @@ You can also save locations that you might check frequently and they will be sto
 <img src="https://github.com/zanadaniel/Weather4U/blob/master/Misc/Index.png">
 
 # Search a Location
-Search any city around the world and get live forecast instantly!
+Search any city around the world and get live forecast!
 
 <img src="https://github.com/zanadaniel/Weather4U/blob/master/Misc/Search2.png">
 
 <img src="https://github.com/zanadaniel/Weather4U/blob/master/Misc/SearchResult.png">
 
 # Save Locations
-Look for the '+' button which will save that location for you in the favoutites page.
+Look for the '+' button to favourite a location.
 
 <img src="https://github.com/zanadaniel/Weather4U/blob/master/Misc/Save.png">
 
 # Manage Saved Locations
-You can update and delete existing favourites as well by using the 'i' and 'x' buttons respectively.
+Update and delete existing favourites by using the 'i' and 'x' buttons respectively.
 
 <img src="https://github.com/zanadaniel/Weather4U/blob/master/Misc/EditDelete.png">
 
