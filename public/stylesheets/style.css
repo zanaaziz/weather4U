@@ -21,11 +21,3 @@ main {
 .table tbody > tr:first-child > td {
   border-top: none;
 }
-
-#del {
-  color: black;
-}
-
-#save {
-  color: black;
-}

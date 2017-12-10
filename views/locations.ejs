@@ -16,10 +16,10 @@
         <% for(var loc in locations){ %>
         
           <% current_location = loc.replace(', ', '/'); %><!-- creates a string that stores the current location in URL format i.e. 'dublin/ireland' -->
-          <% current_location_id = loc.replace(', ', '_'); %><!-- creates a unique string that will be the form ID of each location -->
+          <% current_location_id = loc.replace(', ', '_'); %><!-- creates a unique string that will be the delete form ID of each location -->
+          <% current_location_id_edit = loc.replace(', ', '-'); %><!-- creates a unique string that will be the edit form ID of each location -->
         
           <% include ../partials/locations_table %><!-- displaying the forecast tables -->
-          
         <% } %><!-- /for location in db -->
       <% }else{ %>
         <div class="jumbotron">

@@ -4,7 +4,7 @@ var YQL = require('yql');
 
 /* GET locations page. */
 router.get('/', function(req, res, next) {
-  req.db.get('locations').find({},{},function(e,docs){
+  req.db.get('locations').find({},{}, function(e,docs){
 
     var saved_locations = {};
     
@@ -58,8 +58,52 @@ router.get('/', function(req, res, next) {
   });
 });
 
+/* GET edit page */
+router.get('/edit/:city/:country', function(req, res, next) {
+  res.render('edit', {
+      title: 'Weather4U',
+      city: req.params.city,
+      country: req.params.country
+  });
+});
+
+/* POST edit */
+router.post('/update/:city/:country', function(req, res, next) {
+  
+  var query = new YQL(`select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="${req.body.newLoc}") and u="c" `);
+    
+  query.exec(function(err, data) {
+    
+    if(err) {
+      console.log(err);
+      return;
+    }
+    
+    var result = data.query.results.channel;
+    
+    req.db.get('locations').update({
+      city: req.params.city,
+      country: req.params.country
+    },
+    {
+      city: result.location.city,
+      country: result.location.country
+    },
+    {},
+    function (err,oc) {
+      if (err) {
+        // If it failed, return error
+        res.send("There was a problem updating the information from the database.");
+      } else {
+        // redirect to locations
+        res.redirect("../../../locations");
+      }
+    }); // db update
+  }); // API call
+});
+
 /* POST delete */
-router.post('/delete/:city/:country', function(req, res) {
+router.post('/delete/:city/:country', function(req, res, next) {
   
   req.db.get('locations').remove({
     city: req.params.city,

@@ -12,9 +12,7 @@ var db = monk('zanadaniel-weather4u-5712074:27017/weather4u');
 
 var index = require('./routes/index');
 var search = require('./routes/search');
-var about = require('./routes/about');
 var locations = require('./routes/locations');
-var contact = require('./routes/contact');
 
 var app = express();
 
@@ -39,9 +37,7 @@ app.use(function(req,res,next){
 
 app.use('/', index);
 app.use('/search', search);
-app.use('/about', about);
 app.use('/locations', locations);
-app.use('/contact', contact);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

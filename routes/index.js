@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
   var db = req.db;
   var collection = db.get('popular_locations');
   
-  collection.find({},{},function(e,docs){
+  collection.find({},{}, function(e,docs){
     
     var pop_weather = {};
     

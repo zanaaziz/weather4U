@@ -4,6 +4,11 @@ var YQL = require('yql');
 
 var result;
 
+/* GET redirect to home */
+router.get('/', function (req, res, next) {
+  res.redirect('../');
+});
+
 /* POST search */
 router.post('/', function (req, res, next) {
   
@@ -28,20 +33,27 @@ router.post('/', function (req, res, next) {
 /* POST save location. */
 router.post('/save', function(req, res) {
 
-  req.db.get('locations').insert({
-    city: result.location.city,
-    country: result.location.country
-    
-  }, function (err,oc) {
-    if (err) {
-    // If it failed, return error
-    res.send("There was a problem adding the information to the database.");
-    } else {
-    // And forward to success page
-    res.redirect("../locations");
+  req.db.get('locations').update(
+    {
+      city: result.location.city,
+      country: result.location.country
+    },
+    {
+      city: result.location.city,
+      country: result.location.country
+    },
+    {
+      upsert: true
+    }, 
+    function (err,oc) {
+      if (err) {
+      // If it failed, return error
+      res.send("There was a problem adding the information to the database.");
+      } else {
+      // And forward to success page
+      res.redirect("../locations");
     }
-    
-  }); // db insert
+  }); // db insert if doesn't exist already
 }); // POST
 
 module.exports = router;

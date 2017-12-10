@@ -3,12 +3,12 @@
         <h4 class="panel-title">
             <%- loc %><!-- Location Name -->
             
-            <form id="<%- current_location_id %>" class="pull-right" style="margin-left: 25px;" method="post" action="/locations/delete/<%- current_location %>">
-                <span class="glyphicon glyphicon-remove-sign" id="del" aria-hidden="true" onclick="document.getElementById('<%- current_location_id %>').submit()"></span>
+            <form id="<%- current_location_id %>" class="pull-right" style="margin-left: 5px;" method="post" action="/locations/delete/<%- current_location %>">
+                <span class="glyphicon glyphicon-remove-sign" aria-hidden="true" onclick="document.getElementById('<%- current_location_id %>').submit()" style="cursor:pointer"></span>
             </form>
             
-            <form id="<%- current_location_id %>" class="pull-right" method="post" action="/locations/delete/<%- current_location %>">
-                <span class="glyphicon glyphicon-info-sign" id="del" aria-hidden="true" onclick="document.getElementById('<%- current_location_id %>').submit()"></span>
+            <form id="<%- current_location_id_edit %>" class="pull-right" method="get" action="/locations/edit/<%- current_location %>">
+                <span class="glyphicon glyphicon-info-sign" aria-hidden="true" onclick="document.getElementById('<%- current_location_id_edit %>').submit()" style="cursor:pointer"></span>
             </form>
         </h4>
     </div>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include ../partials/head %>
+  </head>
+  
+  <body class="container">
+    <header>
+      <% include ../partials/header %>
+    </header>
+
+    <main>
+        <form method="post" action="../../../locations/update/<%= city %>/<%= country %>">
+          <div class="form-group">
+            <label class="col-form-label" for="currentField">Current Location</label>
+            <input type="text" readonly class="form-control" id="currentField" placeholder="<%= city %>, <%= country %>">
+          </div>
+          
+          <div class="form-group">
+            <label class="col-form-label" for="editField">New Location</label>
+            <input name="newLoc" type="text" class="form-control" id="editField" placeholder="What would you like to change it to?">
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Update Location</button>
+        </form>
+    </main>
+    
+    <footer>
+      <% include ../partials/footer %>
+    </footer>
+  </body>
+</html>
