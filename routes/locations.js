@@ -66,6 +66,7 @@ router.get('/', function(req, res, next) {
 router.get('/edit/:city/:country', function(req, res, next) {
   res.render('edit', {
       title: 'Weather4U',
+      page: ' - ' + req.params.city + ", " + req.params.country,
       city: req.params.city,
       country: req.params.country
   });

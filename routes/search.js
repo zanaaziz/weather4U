@@ -25,6 +25,7 @@ router.post('/', function (req, res, next) {
     
     res.render('search', {
       title: 'Weather4U',
+      page: ' - ' + result.location.city + ', ' + result.location.country,
       search: result
     });
   }); // API call
