@@ -6,4 +6,4 @@ You can search any location around the world which the app will respond with the
 
 Also, you can save locations which you might check frequently and those favourited locations will be stored on the MongoDB database which will then be found neatly in the 'Favourites' page.
 
-<img src="https://github.com/zanadaniel/Weather4U/blob/master/Misc/Index.png" width="600">
+<img src="https://github.com/zanadaniel/Weather4U/blob/master/Misc/Index.png" width="1000">
