@@ -1,5 +1,5 @@
 # Weather4U
-Weather4U is a simple web app built with Node.js, Express.js, and MongoDB.<br>
+Weather4U is a simple web app built with Node.js, Express, and MongoDB.<br>
 As the name might suggest, it displays real time forecast information thanks to the great guys over at Yahoo! Weather for providing their API.
 
 You can search any location and the app will respond with the forecast of the next seven days.
