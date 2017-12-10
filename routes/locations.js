@@ -4,6 +4,7 @@ var YQL = require('yql');
 
 /* GET locations page. */
 router.get('/', function(req, res, next) {
+  // @https://docs.mongodb.com/v3.4/reference/method/db.collection.find
   req.db.get('locations').find({},{}, function(e,docs){
 
     var saved_locations = {};
@@ -12,6 +13,7 @@ router.get('/', function(req, res, next) {
       
       saved_locations[loc.city + ", " + loc.country] =  [];
       
+      // @https://developer.yahoo.com/weather
       var query = new YQL(`select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="${loc.city + ", " + loc.country}") and u="c" `);
       
       query.exec(function(err, data) {
@@ -49,9 +51,11 @@ router.get('/', function(req, res, next) {
       }); // API call
     }); // forEach location
     
+    // @https://nodejs.org/api/timers.html
     setTimeout(function() {
       res.render('locations', {
       title: 'Weather4U',
+      page: ' - Favourites',
       locations: saved_locations
       });
     }, 1000);
@@ -81,6 +85,7 @@ router.post('/update/:city/:country', function(req, res, next) {
     
     var result = data.query.results.channel;
     
+    // @https://docs.mongodb.com/v3.4/reference/method/db.collection.update
     req.db.get('locations').update({
       city: req.params.city,
       country: req.params.country
@@ -105,6 +110,7 @@ router.post('/update/:city/:country', function(req, res, next) {
 /* POST delete */
 router.post('/delete/:city/:country', function(req, res, next) {
   
+  // @https://docs.mongodb.com/v3.4/reference/method/db.collection.remove
   req.db.get('locations').remove({
     city: req.params.city,
     country: req.params.country

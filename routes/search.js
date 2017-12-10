@@ -53,7 +53,7 @@ router.post('/save', function(req, res) {
       // And forward to success page
       res.redirect("../locations");
     }
-  }); // db insert if doesn't exist already
+  }); // db insert if location doesn't exist already
 }); // POST
 
 module.exports = router;
